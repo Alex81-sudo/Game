@@ -13,8 +13,6 @@ distance = -37.0
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -5)
 zoom = Vector2(4, 4)
-limit_bottom = 120
-limit_smoothed = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -22,4 +20,4 @@ limit_smoothed = true
 shape = SubResource("WorldBoundaryShape2D_uwrxv")
 
 [node name="Coin" parent="StaticBody2D" instance=ExtResource("2_yqjtg")]
-position = Vector2(60, 14)
+position = Vector2(63, -8)
