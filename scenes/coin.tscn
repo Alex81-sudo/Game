@@ -99,11 +99,14 @@ animations = [{
 radius = 5.0
 
 [node name="Coin" type="Area2D"]
+collision_mask = 3
 script = ExtResource("1_i64fm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ls27i")
 autoplay = "default"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ssuvv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
