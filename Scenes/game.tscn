@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://bbvlco72355tx"]
+[gd_scene load_steps=11 format=4 uid="uid://bbvlco72355tx"]
 
 [ext_resource type="Texture2D" uid="uid://bxfmq6twk8ida" path="res://Assets/sprites/world_tileset.png" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://b028wu4jgyjpy" path="res://Scenes/coin.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://curv2r003fhdh" path="res://Scenes/player.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://84yp45so6cbf" path="res://Scenes/coin.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bp1wv0q8iwc88" path="res://Scenes/player.tscn" id="3_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://dm4olvsb6eycj" path="res://scenes/killzone.tscn" id="4_lbhrr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qxrlw"]
 texture = ExtResource("1_ebmjs")
@@ -358,7 +359,9 @@ texture = ExtResource("1_ebmjs")
 sources/0 = SubResource("TileSetAtlasSource_ebmjs")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
-distance = -37.0
+distance = -155.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
 
 [node name="Game" type="Node2D"]
 position = Vector2(516, 55)
@@ -378,19 +381,26 @@ show_behind_parent = true
 tile_map_data = PackedByteArray("AAAuAAgAAAADAA4AAAAvAAgAAAADAA4AAAAwAAgAAAADAA4AAAAxAAgAAAADAA4AAAAyAAgAAAADAA4AAAAzAAgAAAADAA4AAAA0AAgAAAADAA4AAAA1AAgAAAADAA4AAAA2AAgAAAADAA4AAAA3AAgAAAADAA4AAAA4AAgAAAADAA4AAAA5AAgAAAADAA4AAAA6AAgAAAADAA4AAAA7AAgAAAADAA4AAAA8AAcAAAADAA4AAAA9AAcAAAADAA4AAAA+AAcAAAADAA4AAAA/AAcAAAADAA4AAABAAAYAAAADAA4AAABBAAUAAAADAA4AAABCAAUAAAADAA4AAABDAAQAAAADAA4AAABEAAQAAAADAA4AAABFAAQAAAADAA4AAABGAAQAAAADAA4AAABHAAQAAAADAA4AAABIAAQAAAADAA4AAABHAAEAAAADAA0AAABGAAEAAAADAA0AAABFAAEAAAADAA0AAABEAAEAAAADAA0AAABEAAIAAAADAA0AAABFAAIAAAADAA0AAABGAAIAAAADAA0AAABHAAIAAAADAA0AAABHAAMAAAADAA0AAABGAAMAAAADAA0AAABFAAMAAAADAA0AAABEAAMAAAADAA0AAABDAAMAAAADAA0AAABDAAIAAAADAA0AAABCAAMAAAADAA0AAABCAAQAAAADAA0AAABBAAQAAAADAA0AAABBAAMAAAADAA0AAABAAAMAAAADAA0AAABAAAQAAAADAA0AAABAAAUAAAADAA0AAAA/AAUAAAADAA0AAAA/AAYAAAADAA0AAAA+AAYAAAADAA0AAAA+AAUAAAADAA0AAAA+AAQAAAADAA0AAAA9AAUAAAADAA0AAAA9AAYAAAADAA0AAAA8AAYAAAADAA0AAAA7AAYAAAADAA0AAAA7AAcAAAADAA0AAAA6AAcAAAADAA0AAAA5AAcAAAADAA0AAAA6AAYAAAADAA0AAAA5AAYAAAADAA0AAAA4AAcAAAADAA0AAAA3AAcAAAADAA0AAAA2AAcAAAADAA0AAAA1AAcAAAADAA0AAAA1AAYAAAADAA0AAAA0AAcAAAADAA0AAAA0AAYAAAADAA0AAAAzAAYAAAADAA0AAAAzAAcAAAADAA0AAAAyAAcAAAADAA0AAAAyAAYAAAADAA0AAAAxAAcAAAADAA0AAAAwAAcAAAADAA0AAAAvAAcAAAADAA0AAAAvAAYAAAADAA0AAAAwAAYAAAADAA0AAAAuAAYAAAADAA0AAAAuAAcAAAADAA0AAABIAAIAAAADAA0AAABIAAMAAAADAA0AAABJAAIAAAADAA0AAABJAAMAAAADAA0AAAA=")
 tile_set = SubResource("TileSet_qxrlw")
 
-[node name="Player#Camera2D" type="Camera2D" parent="."]
-position = Vector2(-2.28882e-05, -6)
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-916.406, -52)
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
+
+[node name="Coin" parent="StaticBody2D" instance=ExtResource("2_yqjtg")]
+position = Vector2(-899.219, -271)
+
+[node name="Player" parent="." instance=ExtResource("3_wrm1d")]
+position = Vector2(-1098.44, -191)
+
+[node name="Player#Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -6)
 zoom = Vector2(4, 4)
 limit_bottom = 120
 limit_smoothed = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Killzone" parent="Player/Player#Camera2D" instance=ExtResource("4_lbhrr")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("WorldBoundaryShape2D_uwrxv")
-
-[node name="Coin" parent="StaticBody2D" instance=ExtResource("2_yqjtg")]
-position = Vector2(60, 14)
-
-[node name="Player" parent="." instance=ExtResource("3_wrm1d")]
-position = Vector2(-1106.25, -190)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Player#Camera2D/Killzone"]
+position = Vector2(-278.906, 0)
+shape = SubResource("WorldBoundaryShape2D_iywne")
