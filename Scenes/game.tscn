@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbvlco72355tx"]
+[gd_scene load_steps=11 format=3 uid="uid://bbvlco72355tx"]
 
 [ext_resource type="Texture2D" uid="uid://bxfmq6twk8ida" path="res://Assets/sprites/world_tileset.png" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://c2siv8om2wacw" path="res://scripts/game_manager.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://84yp45so6cbf" path="res://scenes/coin.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bp1wv0q8iwc88" path="res://scenes/player.tscn" id="3_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://dm4olvsb6eycj" path="res://scenes/killzone.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://chnjxt5tc4o0" path="res://scenes/Enemy.tscn" id="5_iywne"]
+[ext_resource type="FontFile" uid="uid://yhms3dmv5e45" path="res://Assets/fonts/PixelOperator8.ttf" id="6_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
 
@@ -232,11 +234,24 @@ sources/0 = SubResource("TileSetAtlasSource_qxrlw")
 position = Vector2(516, 55)
 scale = Vector2(1.28, 1)
 
+[node name="GameManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_u5sy4")
+
+[node name="ScoreLabel" type="Label" parent="GameManager"]
+offset_left = -428.0
+offset_top = -275.0
+offset_right = -263.0
+offset_bottom = -252.0
+text = "You collected x  coins."
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="Player" parent="." instance=ExtResource("3_wrm1d")]
-position = Vector2(364.063, -230)
+position = Vector2(-1100, -197)
 
 [node name="Player#Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(0, -6)
+position = Vector2(0.78125, -1)
 zoom = Vector2(4, 4)
 limit_bottom = 120
 limit_smoothed = true
@@ -244,7 +259,6 @@ limit_smoothed = true
 [node name="Killzone" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(-798.44, -91)
 collision_layer = 0
-collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(-271.873, 129)
@@ -279,3 +293,23 @@ position = Vector2(-85.1563, -315)
 
 [node name="Enemy" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(322.656, -195)
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -1196.88
+offset_top = -269.0
+offset_right = -987.875
+offset_bottom = -261.0
+theme_override_fonts/font = ExtResource("6_p57ef")
+theme_override_font_sizes/font_size = 8
+text = "use arrows to move left and right"
+
+[node name="label" type="Node" parent="Label2"]
+
+[node name="Label" type="Label" parent="Label2"]
+offset_left = 13.2862
+offset_top = 27.0
+offset_right = 99.2862
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("6_p57ef")
+theme_override_font_sizes/font_size = 8
+text = "Space to jump"
