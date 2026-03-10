@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bbvlco72355tx"]
 
 [ext_resource type="Texture2D" uid="uid://bxfmq6twk8ida" path="res://Assets/sprites/world_tileset.png" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://c2siv8om2wacw" path="res://scripts/game_manager.gd" id="1_u5sy4"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://84yp45so6cbf" path="res://scenes/coin.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bp1wv0q8iwc88" path="res://scenes/player.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://dm4olvsb6eycj" path="res://scenes/killzone.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://chnjxt5tc4o0" path="res://scenes/Enemy.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://cwlosm5vlafmh" path="res://scenes/killzone.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://xymk7gwfq1r7" path="res://scenes/Enemy.tscn" id="5_iywne"]
 [ext_resource type="FontFile" uid="uid://yhms3dmv5e45" path="res://Assets/fonts/PixelOperator8.ttf" id="6_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
@@ -276,14 +276,6 @@ layer_1/tile_data = PackedInt32Array(-851977, 0, 11, -786441, 0, 11, -720905, 0,
 
 [node name="Coins" type="Node" parent="."]
 
-[node name="Player#Camera2D" type="Camera2D" parent="."]
-position = Vector2(-1106.25, -190)
-zoom = Vector2(4, 4)
-limit_bottom = 120
-limit_smoothed = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-4.6875, 14)
 [node name="Coin" parent="Coins" instance=ExtResource("2_yqjtg")]
 position = Vector2(-677, -148)
 scale = Vector2(1.28, 1)
@@ -295,6 +287,15 @@ scale = Vector2(1.28, 1)
 [node name="Coin3" parent="Coins" instance=ExtResource("2_yqjtg")]
 position = Vector2(-309, -217)
 scale = Vector2(1.28, 1)
+
+[node name="Player#Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1106.25, -190)
+zoom = Vector2(4, 4)
+limit_bottom = 120
+limit_smoothed = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-4.6875, 14)
 
 [node name="Coin" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(-85.1563, -315)
@@ -314,6 +315,7 @@ text = "use arrows to move left and right"
 [node name="label" type="Node" parent="Label2"]
 
 [node name="Label" type="Label" parent="Label2"]
+layout_mode = 0
 offset_left = 13.2862
 offset_top = 27.0
 offset_right = 99.2862
