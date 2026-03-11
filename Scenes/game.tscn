@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=3 uid="uid://bbvlco72355tx"]
 
 [ext_resource type="Texture2D" uid="uid://bxfmq6twk8ida" path="res://Assets/sprites/world_tileset.png" id="1_ebmjs"]
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_u5sy4"]
+[ext_resource type="Script" uid="uid://c2siv8om2wacw" path="res://scripts/game_manager.gd" id="1_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://84yp45so6cbf" path="res://scenes/coin.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bp1wv0q8iwc88" path="res://scenes/player.tscn" id="3_wrm1d"]
-[ext_resource type="PackedScene" uid="uid://cwlosm5vlafmh" path="res://scenes/killzone.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://xymk7gwfq1r7" path="res://scenes/Enemy.tscn" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://dm4olvsb6eycj" path="res://scenes/killzone.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://chnjxt5tc4o0" path="res://scenes/Enemy.tscn" id="5_iywne"]
 [ext_resource type="FontFile" uid="uid://yhms3dmv5e45" path="res://Assets/fonts/PixelOperator8.ttf" id="6_p57ef"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_iywne"]
