@@ -460,6 +460,17 @@ scale = Vector2(1.28, 1)
 [node name="Coin5" parent="Coins" instance=ExtResource("2_yqjtg")]
 position = Vector2(592.8, 69)
 scale = Vector2(1.28, 1)
+[node name="Player#Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1106.25, -190)
+zoom = Vector2(4, 4)
+limit_bottom = 120
+limit_smoothed = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-4.6875, 14)
+
+[node name="Coin" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-85.1563, -315)
 
 [node name="Enemy" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(322.656, -195)
